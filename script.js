@@ -1,16 +1,27 @@
-let Counts = 0;
+let counts = [];
 
-document.querySelector("#join").addEventListener("click", function () {
-  const name = document.querySelector("#name");
-  const password = document.querySelector("#password");
+document.getElementById("join").addEventListener("click", function () {
+  const name = document.querySelector("#name").value;
+  const password = document.querySelector("#password").value;
+  counts = JSON.parse(localStorage.getItem("counts")) || [];
+
+  const userExists = counts.some(
+    (user) => user.usuario === name && user.senha === password
+  );
+
+  if (userExists) {
+    alert("Acesso concedido");
+  } else {
+    alert("Usuário ou senha inválidos");
+  }
 });
-document.querySelector("#newCoutn").addEventListener("click", function () {
-  const name = document.querySelector("#name");
-  const password = document.querySelector("#password");
-  Counts = localStorage.getItem("counts");
 
-  Counts++;
-  localStorage.setItem("name" + Counts, name);
-  localStorage.setItem("password" + Counts, password);
-  localStorage.setItem("counts", Counts);
+document.getElementById("newCount").addEventListener("click", function () {
+  const name = document.querySelector("#name").value;
+  const password = document.querySelector("#password").value;
+  counts = JSON.parse(localStorage.getItem("counts")) || [];
+
+  const newUser = { usuario: name, senha: password };
+  counts.push(newUser);
+  localStorage.setItem("counts", JSON.stringify(counts));
 });
