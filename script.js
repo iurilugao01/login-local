@@ -10,7 +10,7 @@ document.getElementById("join").addEventListener("click", function () {
   );
 
   if (userExists) {
-    alert("Acesso concedido");
+    location.href = "./counts.html";
   } else {
     alert("Usuário ou senha inválidos");
   }
@@ -24,4 +24,8 @@ document.getElementById("newCount").addEventListener("click", function () {
   const newUser = { usuario: name, senha: password };
   counts.push(newUser);
   localStorage.setItem("counts", JSON.stringify(counts));
+});
+
+document.getElementById("refresh").addEventListener("clicl", function () {
+  const countList = document.querySelector("#countList");
 });
