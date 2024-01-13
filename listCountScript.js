@@ -14,3 +14,4 @@ function refresh() {
   });
 }
 document.querySelector("#refreshBtn").addEventListener("click", refresh);
+refresh();
