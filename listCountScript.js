@@ -13,5 +13,13 @@ function refresh() {
     ul.appendChild(li);
   });
 }
+document.querySelector("#deletAll").addEventListener("click", function () {
+  counts = [];
+  localStorage.removeItem("counts");
+
+  const ul = document.querySelector("#countList");
+  ul.innerHTML = "";
+});
+
 document.querySelector("#refreshBtn").addEventListener("click", refresh);
 refresh();
